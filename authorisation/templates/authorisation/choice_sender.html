@@ -1,0 +1,4 @@
+<h1>Выберите роль</h1>
+{% for sender in senders %}
+    <a href="/authorisation/sender/{{ sender.id }}/">{{ sender.name }}</a>&nbsp;
+{% endfor %}

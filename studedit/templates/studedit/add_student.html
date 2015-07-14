@@ -1,0 +1,9 @@
+<h1>Добавление студента для пользователя {{ sender }}</h1>
+
+<form action="/studedit/{{ sender }}/add/ok/" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Добавить">
+</form>
+
+<a href="/studedit/{{ sender }}/">Назад</a>

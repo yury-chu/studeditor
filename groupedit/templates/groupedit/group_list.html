@@ -1,0 +1,16 @@
+{% if groups %}
+    <h1>Найдены группы</h1>
+    <table>
+        {% for group in groups %}
+            <tr>
+                <td>{{ group.id }}</td><td>{{ group.name }}</td>
+                <td>{{ group.faculty }}</td><td>{{ group.year }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="/groupedit/add/">Добавить группу</a></p>
+    <p><a href="/authorisation/who/">В начало</a> </p>
+{% else %}
+    <h1>Групп не найдено</h1>
+    <a href="/groupedit/add/">Добавить группу</a>
+{% endif %}

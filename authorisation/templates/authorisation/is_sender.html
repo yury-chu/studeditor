@@ -1,0 +1,15 @@
+<h1>Добро пожаловть {{ sender.name }}</h1>
+<h2>Ваша роль {{ sender.role }}</h2>
+<div>
+    <p>Вы можете:</p>
+    {%  if sender.id == 1 %}
+        <a href="/groupedit/show/">Редактировать список групп</a>&nbsp;<span> или </span>
+        <a href="/studedit/{{ sender.id }}/">Редактировать список студентов</a>
+        <hr>
+    {% endif %}
+    {% if sender.id == 2 %}
+        <a href="/studedit/{{ sender.id }}/">Редактировать список студентов</a></br>
+        <hr>
+    {% endif %}
+</div>
+<p><a href="/authorisation/who/">Назад</a> </p>
