@@ -1,16 +1,23 @@
-{% if groups %}
-    <h1>Найдены группы</h1>
-    <table>
-        {% for group in groups %}
-            <tr>
-                <td>{{ group.id }}</td><td>{{ group.name }}</td>
-                <td>{{ group.faculty }}</td><td>{{ group.year }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    <p><a href="/groupedit/add/">Добавить группу</a></p>
-    <p><a href="/authorisation/who/">В начало</a> </p>
+{% if user_name %}
+    <h1>Вы {{ user_name }}</h1>
+
+    {% if groups %}
+        <h1>Найдены группы</h1>
+        <table>
+            {% for group in groups %}
+                <tr>
+                    <td>{{ group.id }}</td><td>{{ group.name }}</td>
+                    <td>{{ group.faculty }}</td><td>{{ group.year }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p><a href="/groupedit/add/">Добавить группу</a></p>
+        <p><a href="/authorisation/welcome/">В начало</a> </p>
+    {% else %}
+        <h1>Групп не найдено</h1>
+        <a href="/groupedit/add/">Добавить группу</a>
+    {% endif %}
 {% else %}
-    <h1>Групп не найдено</h1>
-    <a href="/groupedit/add/">Добавить группу</a>
+    <h2>Вы не авторизованы в системе</h2>
+    <a href="/authorisation/login/">Воити в систему</a>
 {% endif %}

@@ -29,10 +29,10 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('/authorisation/welcome')
         else:
             args['login_error'] = "User not found"
-            return render (request, 'authorisation/login.html', args)
+            return render(request, 'authorisation/login.html', args)
     else:
         return render(request, 'authorisation/login.html', args)
 
@@ -51,3 +51,14 @@ def register(request):
         else:
             args['form'] = new_curator_form
     return render(request, 'authorisation/register.html', args)
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/authorisation/login/')
+
+def welcome(request):
+    args = {}
+    #args.update(csrf(request))
+    user_name = auth.get_user(request)
+    args['user_name'] = user_name.get_username()
+    return render(request, 'authorisation/welcome.html', args)
