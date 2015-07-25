@@ -14,14 +14,15 @@
                 </tr>
             {% endfor %}
         </table>
-        <p><a href="/groupedit/add/">Добавить группу</a></p>
-        <p><a href="/authorisation/action/">В начало</a> </p>
+        <hr>
+        <p><a class="navigation" href="/groupedit/add/">Добавить группу</a></p>
+        <p><a class="navigation" href="/authorisation/action/">В начало</a> </p>
     {% else %}
         <h1>Групп не найдено</h1>
-        <a href="/groupedit/add/">Добавить группу</a>
+        <a class="navigation" href="/groupedit/add/">Добавить группу</a>
     {% endif %}
 {% else %}
     <h2>Вы не авторизованы в системе</h2>
-    <a href="/authorisation/login/">Воити в систему</a>
+    <a class="navigation" href="/authorisation/login/">Воити в систему</a>
 {% endif %}
 {% endblock %}

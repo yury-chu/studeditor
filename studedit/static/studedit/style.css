@@ -1,0 +1,20 @@
+body {
+    background-color: #bbaaff;
+}
+
+header {
+    background-color: #ccaaff;
+}
+
+.content {
+    background-color: #ddccff;
+}
+.navigation {
+    background-color: #ccaaff;
+}
+table th {
+    border: solid 1px black;
+}
+td {
+    border-bottom: dashed 1px black;
+}

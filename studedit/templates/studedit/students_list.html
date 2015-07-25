@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block students_list %}
-    <h1>Список студентов для {{ sender }}</h1>
+    <h1>Список студентов для {{ user_name }}</h1>
     {{ message }}
 
     {% if students %}
@@ -16,10 +16,11 @@
                 </tr>
             {% endfor %}
         </table>
-        <a href="/studedit/add/">Добавить студента</a>
+        <hr>
+        <a class="navigation" href="/studedit/add/">Добавить студента</a>
     {% else %}
         <h2>Студентов не найдено</h2>
-        <a href="/studedit/add/">Добавить студента</a>
+        <a class="navigation" href="/studedit/add/">Добавить студента</a>
     {% endif %}
-    <p><a href="/authorisation/action/">В начало</a> </p>
+    <p><a class="navigation" href="/authorisation/action/">В начало</a> </p>
 {% endblock %}

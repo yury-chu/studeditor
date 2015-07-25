@@ -1,13 +1,17 @@
 {% extends 'main.html' %}
 
 {% block add_student %}
-    <h1>Добавление студента для пользователя: {{ user_name }}</h1>
+    <div>
+        <h1>Добавление студента для пользователя: {{ user_name }}</h1>
 
-    <form action="/studedit/add/ok/" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Добавить">
-    </form>
+        <form action="/studedit/add/ok/" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+    <div class="navigation">
+        <a class="navigation" href="/studedit/">Назад</a>
+    </div>
 
-    <a href="/studedit/">Назад</a>
 {% endblock %}

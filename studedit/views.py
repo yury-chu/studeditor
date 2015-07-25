@@ -18,13 +18,14 @@ def show_list(request):
     if user_name == 'super':
         students = Students.objects.all()
         message = "You see all"
-    elif user_name:
-        sender_obj = Senders.objects.get(name=user_name)
-        students = Students.objects.filter(sender=sender_obj.id)
-        message = 'your see you added students'
     else:
-        message = 'You need enter in system'
-        students = None
+        try:
+            sender_obj = Senders.objects.get(name=user_name)
+            students = Students.objects.filter(sender=sender_obj.id)
+            message = 'your see you added students'
+        except:
+            message = 'You need enter in system'
+            students = None
 
     args = {
         'students': students,

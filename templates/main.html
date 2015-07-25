@@ -1,28 +1,30 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <title>Studeditor-2</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'studedit/style.css' %}"/>
 </head>
 <body>
-<div>
+<header>
     <section>
         <ul>
             {% if user_name %}
-                <li><a href="/authorisation/logout/">Выйти</a></li>
+                <li><a href="/authorisation/logout/">Выйти ({{ user_name }})</a></li>
             {% else %}
                 <li><a href="/authorisation/login/">Войти</a>
                     {% block login %}{% endblock %}</li>
             {% endif %}
         </ul>
     </section>
-</div>
+</header>
 <div>
     {% if user_name %}
         <h1>Вы вошли как: {{ user_name }}</h1>
-        <a href="/groupedit/">Редактировать группы</a>
-        <a href="/studedit/">Редактировать список студентов</a>
-        <div>
+        <a class="navigation" href="/groupedit/">Редактировать группы</a>
+        <a class="navigation" href="/studedit/">Редактировать список студентов</a>
+        <div class="content">
             {% block action %}{% endblock %}
             {% block group_list %}{% endblock %}
             {% block add_group %}{% endblock %}
