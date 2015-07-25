@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div>
+    <section>
+        <ul>
+            {% if user_name %}
+                <li><a href="/authorisation/logout/">Выйти</a>
+                    {% block welcome %}{% endblock %}</li>
+            {% else %}
+                <li><a href="/authorisation/login/">Войти</a>
+                    {% block login %}{% endblock %}</li>
+            {% endif %}
+        </ul>
+    </section>
+</div>
+<div>
+    {% if user_name %}
+        <h1>Helloyy {{ user_name}}</h1>
+        <a href="/groupedit/show/">Редактировать группы</a>
+        <a href="/studedit/">Редактировать список студентов</a>
+        {% block group_list %}{% endblock %}
+        {% block add_group %}{% endblock %}
+    {% else %}
+        <h1>Вам нужно войти в систему</h1>
+    {% endif %}
+</div>
+</body>
+</html>

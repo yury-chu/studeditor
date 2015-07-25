@@ -3,7 +3,7 @@ from studedit.models import Students, Senders
 from studedit.forms import StudentForm
 # Create your views here.
 
-def show_list(request, sender_id):
+def show_list(request):
     if sender_id == '1':
         students = Students.objects.all()
     else:
@@ -14,7 +14,7 @@ def show_list(request, sender_id):
     }
     return render(request, 'studedit/students_list.html', args)
 
-def add(request, sender_id):
+def add(request):
     form = StudentForm()
     args = {
         'form': form,
@@ -22,7 +22,7 @@ def add(request, sender_id):
     }
     return render(request, 'studedit/add_student.html', args)
 
-def add_ok(request, sender_id):
+def add_ok(request):
     push = StudentForm(request.POST)
     data = push.save(commit=False)
     data.sender = Senders.objects.get(pk=sender_id)

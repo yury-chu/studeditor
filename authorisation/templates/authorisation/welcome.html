@@ -1,7 +1,7 @@
-<h1>Привет, вы:  {{ user_name }}</h1>
-
-<div>
-    <a href="/groupedit/show/">Edit group</a>
-
-    <a href="/authorisation/logout/">Выйти из системы</a>
-</div>
+{% extends 'main.html' %}
+{% block welcome %}
+    <h1>Привет, вы:  {{ user_name }}</h1>
+    <div>
+        <a href="/authorisation/logout/">Выйти из системы</a>
+    </div>
+{% endblock %}

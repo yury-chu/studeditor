@@ -5,7 +5,6 @@ from django.contrib import auth
 
 # Create your views here.
 
-
 def show(request):
     groups = Groups.objects.all()
     user_name = auth.get_user(request)
@@ -17,7 +16,9 @@ def show(request):
 
 def add(request):
     form = GroupForm()
+    user_name = auth.get_user(request)
     args = {
+        'user_name': user_name.get_username(),
         'form': form
     }
     return render(request, 'groupedit/add_group.html', args)

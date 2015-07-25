@@ -1,7 +1,12 @@
-<h1>Добавление группы</h1>
+{% extends 'main.html' %}
 
-<form action="/groupedit/add/ok/" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Добавить">
-</form>
+{% block add_group %}
+    <h1>Добавление группы</h1>
+
+    <form action="/groupedit/add/ok/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Добавить">
+    </form>
+    <a href="/groupedit/show/">Назад</a>
+{% endblock %}
