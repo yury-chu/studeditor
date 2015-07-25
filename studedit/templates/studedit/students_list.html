@@ -1,23 +1,25 @@
-<h1>Список студентов для {{ sender }}</h1>
+{% extends 'main.html' %}
 
-{% if sender == '1' %}
-    <h2>Вы видите всех в списке</h2>
-{% else %}
-    <h2>Вы видите только тех, кого добавили в список</h2>
-{% endif %}
+{% block students_list %}
+    <h1>Список студентов для {{ sender }}</h1>
+    {{ message }}
 
-{% if students %}
-    <table>
-        {% for student in students %}
+    {% if students %}
+        <table>
             <tr>
-                <td>{{ student.name }}</td><td>{{ student.family }}</td>
-                <td>{{ student.group }}</td>
+                <th>№</th><th>Имя</th><th>Фамилия</th><th>Группа-Факультет</th>
             </tr>
-        {% endfor %}
-    </table>
-    <a href="/studedit/{{ sender }}/add/">Добавить студента</a>
-{% else %}
-    <h2>Студентов не найдено</h2>
-    <a href="/studedit/{{ sender }}/add/">Добавить студента</a>
-{% endif %}
-<p><a href="/authorisation/who/">В начало</a> </p>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td><td>{{ student.name }}</td>
+                    <td>{{ student.family }}</td><td>{{ student.group }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="/studedit/add/">Добавить студента</a>
+    {% else %}
+        <h2>Студентов не найдено</h2>
+        <a href="/studedit/add/">Добавить студента</a>
+    {% endif %}
+    <p><a href="/authorisation/action/">В начало</a> </p>
+{% endblock %}

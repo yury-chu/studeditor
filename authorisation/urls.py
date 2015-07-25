@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^who/$', views.who),
     url(r'^sender/(?P<sender_id>[0-9]+)/$', views.is_sender),
-    url(r'^welcome/$', views.welcome),
+    url(r'^action/', views.action),
 
 ]

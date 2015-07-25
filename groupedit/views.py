@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from groupedit.forms import GroupForm
 from studedit.models import Groups
 from django.contrib import auth
@@ -10,7 +10,7 @@ def show(request):
     user_name = auth.get_user(request)
     args = {
         'user_name': user_name.get_username(),
-        'groups': groups
+        'groups': groups,
     }
     return render(request, 'groupedit/group_list.html', args)
 
@@ -26,4 +26,4 @@ def add(request):
 def add_ok(request):
     push = GroupForm(request.POST)
     push.save()
-    return HttpResponseRedirect('/groupedit/show/')
+    return redirect('/groupedit/')

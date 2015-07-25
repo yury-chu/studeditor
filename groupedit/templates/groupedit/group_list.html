@@ -1,11 +1,12 @@
 {% extends 'main.html' %}
 {% block group_list %}
 {% if user_name %}
-    <h1>Вы {{ user_name }}</h1>
-
     {% if groups %}
         <h1>Найдены группы</h1>
         <table>
+            <tr>
+                <th>№</th><th>Группа</th><th>Факультет</th><th>Год создания</th>
+            </tr>
             {% for group in groups %}
                 <tr>
                     <td>{{ group.id }}</td><td>{{ group.name }}</td>
@@ -14,7 +15,7 @@
             {% endfor %}
         </table>
         <p><a href="/groupedit/add/">Добавить группу</a></p>
-        <p><a href="/authorisation/welcome/">В начало</a> </p>
+        <p><a href="/authorisation/action/">В начало</a> </p>
     {% else %}
         <h1>Групп не найдено</h1>
         <a href="/groupedit/add/">Добавить группу</a>

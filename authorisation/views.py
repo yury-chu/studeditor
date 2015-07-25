@@ -29,7 +29,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/authorisation/welcome')
+            return redirect('/authorisation/action/')
         else:
             args['login_error'] = "User not found"
             return render(request, 'authorisation/login.html', args)
@@ -46,8 +46,10 @@ def register(request):
             new_curator_form.save()
             new_curator = auth.authenticate(username=new_curator_form.cleaned_data['username'],
                                             password=new_curator_form.cleaned_data['password2'])
+            new_sender = Senders.objects.create(name=new_curator_form.cleaned_data['username'])
+            new_sender.save()
             auth.login(request, new_curator)
-            return redirect('/')
+            return redirect('/authorisation/action/')
         else:
             args['form'] = new_curator_form
     return render(request, 'authorisation/register.html', args)
@@ -56,9 +58,9 @@ def logout(request):
     auth.logout(request)
     return redirect('/authorisation/login/')
 
-def welcome(request):
+def action(request):
     args = {}
     #args.update(csrf(request))
     user_name = auth.get_user(request)
     args['user_name'] = user_name.get_username()
-    return render(request, 'authorisation/welcome.html', args)
+    return render(request, 'authorisation/action.html', args)

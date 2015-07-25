@@ -2,15 +2,14 @@
 <html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Studeditor-2</title>
 </head>
 <body>
 <div>
     <section>
         <ul>
             {% if user_name %}
-                <li><a href="/authorisation/logout/">Выйти</a>
-                    {% block welcome %}{% endblock %}</li>
+                <li><a href="/authorisation/logout/">Выйти</a></li>
             {% else %}
                 <li><a href="/authorisation/login/">Войти</a>
                     {% block login %}{% endblock %}</li>
@@ -20,11 +19,16 @@
 </div>
 <div>
     {% if user_name %}
-        <h1>Helloyy {{ user_name}}</h1>
-        <a href="/groupedit/show/">Редактировать группы</a>
+        <h1>Вы вошли как: {{ user_name }}</h1>
+        <a href="/groupedit/">Редактировать группы</a>
         <a href="/studedit/">Редактировать список студентов</a>
-        {% block group_list %}{% endblock %}
-        {% block add_group %}{% endblock %}
+        <div>
+            {% block action %}{% endblock %}
+            {% block group_list %}{% endblock %}
+            {% block add_group %}{% endblock %}
+            {% block students_list %}{% endblock %}
+            {% block add_student %}{% endblock %}
+        </div>
     {% else %}
         <h1>Вам нужно войти в систему</h1>
     {% endif %}
