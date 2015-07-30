@@ -8,3 +8,4 @@ class StudentForm(ModelForm):
     class Meta:
         model = Students
         fields = ['name', 'family', 'group']
+

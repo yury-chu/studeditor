@@ -12,7 +12,7 @@ header {
 .navigation {
     background-color: #ccaaff;
 }
-table th {
+th {
     border: solid 1px black;
 }
 td {
