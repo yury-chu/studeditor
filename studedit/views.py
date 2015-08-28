@@ -3,6 +3,8 @@ from studedit.models import Students, Senders
 from studedit.forms import StudentForm
 from django.contrib import auth
 
+ADMIN = 'super'
+
 # Create your views here.
 def user_now(request):
     user = auth.get_user(request)
@@ -15,7 +17,7 @@ def user_now(request):
 def show_list(request):
     user_name = user_now(request)
 
-    if user_name == 'super':
+    if user_name == ADMIN:
         students = Students.objects.all()
         message = "You see all"
     else:

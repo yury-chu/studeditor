@@ -8,23 +8,21 @@
 </head>
 <body>
 <header>
-    <section>
-        <ul>
-            {% if user_name %}
-                <li><a href="/authorisation/logout/">Выйти ({{ user_name }})</a></li>
-            {% else %}
-                <li><a href="/authorisation/login/">Войти</a>
-                    {% block login %}{% endblock %}</li>
-            {% endif %}
-        </ul>
-    </section>
+        {% if user_name %}
+        <a href="/authorisation/logout/">Выйти ({{ user_name }})</a>
+        {% else %}
+        <a href="/authorisation/login/">Войти</a>
+            {% block login %}{% endblock %}
+        {% endif %}
 </header>
-<div>
+<section id="content">
     {% if user_name %}
         <h1>Вы вошли как: {{ user_name }}</h1>
-        <a class="navigation" href="/groupedit/">Редактировать группы</a>
-        <a class="navigation" href="/studedit/">Редактировать список студентов</a>
-        <div class="content">
+        <nav>
+            <a href="/groupedit/">Редактировать группы</a>
+            <a href="/studedit/">Редактировать список студентов</a>
+        </nav>
+        <div id="variations">
             {% block action %}{% endblock %}
             {% block group_list %}{% endblock %}
             {% block add_group %}{% endblock %}
@@ -34,6 +32,6 @@
     {% else %}
         <h1>Вам нужно войти в систему</h1>
     {% endif %}
-</div>
+</section>
 </body>
 </html>

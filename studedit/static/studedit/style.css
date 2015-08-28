@@ -1,20 +1,35 @@
 body {
-    background-color: #bbaaff;
+    background-color: #eee;
 }
 
 header {
-    background-color: #ccaaff;
+    background-color: #ddd;
 }
 
-.content {
-    background-color: #ddccff;
+nav {
+    margin: 10px;
 }
-.navigation {
-    background-color: #ccaaff;
+#variations {
+    background-color: #dfdfdf;
+    padding: 10px;
 }
-th {
-    border: solid 1px black;
+
+table {
+    border-collapse: collapse;
+    border: 1px dotted black;
+    padding: 10px;
 }
-td {
-    border-bottom: dashed 1px black;
+
+th, td {
+    border: 1px dotted black;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    color: #111;
+    border-bottom: 1px;
 }
